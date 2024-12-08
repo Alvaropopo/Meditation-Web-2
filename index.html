@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meditation web</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="video">
+
+        <video autoplay muted loop id="bg-video">
+            <source src="./video/Nature.mp4" type="video/mp4">
+        </video>
+    </div>
+    <div class="app">
+        <div class="focus"></div>
+        <div class="audio">
+            <audio autoplay loop id="bg-audio">
+                <source src="./audio/nature.mp3" type="audio/mpeg">
+            </audio>
+            <img src="image/Pause picture.png" alt="pause" onclick="pause()">
+            <img src="image/Volume down.png" alt="vdown" onclick="vdown()">
+            <input type="range" min="1" max="100" value="100" id="vrange">
+            <img src="image/Volume up.png" alt="vup" onclick="vup()">
+            <img src="image/play-button.png" alt="play" onclick="play()">
+            <script>
+                function vdown(){
+                    document.getElementById("bg-audio").volume-=0.1;
+                    document.getElementById("vrange").value= document.getElementById("bg-audio").volume*100;
+                }
+                function vup(){
+                    document.getElementById("bg-audio").volume+=0.1;
+                    document.getElementById("vrange").value= document.getElementById("bg-audio").volume*100;
+                }
+                function play(){
+                    document.getElementById("bg-audio").play();
+                }
+                function pause(){
+                    document.getElementById("bg-audio").pause();
+                }
+            </script>
+        </div>
+        <div class="video-button">
+            <img src="image/nature.png" alt="nature" onclick="videoURL('video/Nature.mp4','audio/nature.mp3')">
+            <img src="image/mountain.png" alt="mountain" onclick="videoURL('video/Mountain.mp4','audio/mountain.mp3')">
+            <img src="image/beach.png" alt="beach" onclick="videoURL('video/Beach.mp4','audio/beach.mp3')">
+            <script>
+                function videoURL(src_video,src_audio){
+                    document.getElementById("bg-video").src=src_video;
+                    document.getElementById("bg-audio").src=src_audio;
+                }
+            </script>
+        </div>
+    </div>
+</body>
+</html>
